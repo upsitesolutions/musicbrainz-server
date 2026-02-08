@@ -48,6 +48,7 @@
 /root/static/sitemaps/sitemap*
 
 /data
+/local
 
 # Ignore nodejs dir
 /node_modules

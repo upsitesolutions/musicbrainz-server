@@ -134,8 +134,20 @@ sub fingerprints : Chained('load') PathPart('fingerprints') {
     );
 }
 
+sub lyrics : Chained('load') PathPart('lyrics') Args(0) {
+    my ($self, $c) = @_;
+
+    $c->model('Recording')->load_lyrics($c->stash->{recording});
+
+    $c->stash(
+        component_path => 'recording/RecordingLyrics',
+        component_props => { recording => $c->stash->{recording}->TO_JSON },
+        current_view => 'Node',
+    );
+}
+
 # Stuff that has the sidebar and needs collection info
-after [qw( show collections details tags ratings aliases fingerprints )] => sub {
+after [qw( show collections details tags ratings aliases fingerprints lyrics )] => sub {
     my ($self, $c) = @_;
     $self->_stash_collections($c);
 };

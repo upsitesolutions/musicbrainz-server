@@ -42,6 +42,11 @@ has 'video' => (
     isa => 'Bool',
 );
 
+has 'lyrics' => (
+    is => 'rw',
+    isa => 'Maybe[Str]',
+);
+
 has 'isrcs' => (
     isa     => 'ArrayRef',
     is      => 'ro',
@@ -80,6 +85,7 @@ around TO_JSON => sub {
         isrcs   => to_json_array($self->isrcs),
         length  => $self->length,
         video   => boolean_to_json($self->video),
+        lyrics  => $self->lyrics,
         related_works => [map { $_->id } @related_works],
         first_release_date => to_json_object($self->first_release_date),
     };

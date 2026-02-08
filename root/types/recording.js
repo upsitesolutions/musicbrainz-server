@@ -22,6 +22,7 @@ declare type RecordingT = $ReadOnly<{
   +first_release_date?: PartialDateT,
   +isrcs: $ReadOnlyArray<IsrcT>,
   +length: number,
+  +lyrics?: ?string,
   +primaryAlias?: string | null,
   +related_works: $ReadOnlyArray<number>,
   +video: boolean,

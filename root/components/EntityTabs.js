@@ -155,6 +155,10 @@ function buildLinks(
     links.push(buildLink(l('Details'), entity, 'details', page));
   }
 
+  if (entity.entityType === 'recording') {
+    links.push(buildLink(l('Lyrics'), entity, 'lyrics', page));
+  }
+
   if (showEditTab(user, entity)) {
     links.push(
       buildLink(lp('Edit', 'verb, interactive'), entity, 'edit', page),

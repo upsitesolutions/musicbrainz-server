@@ -193,6 +193,7 @@ export default {
   'recording/DeleteRecording': (): Promise<mixed> => import('../recording/DeleteRecording.js'),
   'recording/RecordingFingerprints': (): Promise<mixed> => import('../recording/RecordingFingerprints.js'),
   'recording/RecordingIndex': (): Promise<mixed> => import('../recording/RecordingIndex.js'),
+  'recording/RecordingLyrics': (): Promise<mixed> => import('../recording/RecordingLyrics.js'),
   'recording/RecordingMerge': (): Promise<mixed> => import('../recording/RecordingMerge.js'),
   'relationship/linkattributetype/DeleteRelationshipAttributeType': (): Promise<mixed> => import('../relationship/linkattributetype/DeleteRelationshipAttributeType.js'),
   'relationship/linkattributetype/RelationshipAttributeTypeIndex': (): Promise<mixed> => import('../relationship/linkattributetype/RelationshipAttributeTypeIndex.js'),

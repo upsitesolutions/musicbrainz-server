@@ -553,6 +553,21 @@ sub load_first_release_date {
     }
 }
 
+sub load_lyrics
+{
+    my ($self, $recording) = @_;
+    return unless $recording;
+
+    my $lyrics = $self->sql->select_single_value(
+        'SELECT lyrics_original
+           FROM local_recording_overrides
+          WHERE recording_gid = ?',
+        $recording->gid
+    );
+
+    $recording->lyrics($lyrics);
+}
+
 __PACKAGE__->meta->make_immutable;
 no Moose;
 1;
