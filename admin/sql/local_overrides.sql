@@ -30,3 +30,10 @@ CREATE TABLE IF NOT EXISTS local_releasegroup_flags (
         REFERENCES release_group(gid) ON DELETE CASCADE,
     is_jewish BOOLEAN DEFAULT FALSE
 );
+
+-- Preferred key for recordings (MBID)
+CREATE TABLE IF NOT EXISTS local_recording_preferred_key (
+    recording_gid UUID PRIMARY KEY REFERENCES recording(gid) ON DELETE CASCADE,
+    key_value TEXT,
+    is_major BOOLEAN
+);
