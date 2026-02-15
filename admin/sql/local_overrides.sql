@@ -37,3 +37,6 @@ CREATE TABLE IF NOT EXISTS local_recording_preferred_key (
     key_value TEXT,
     is_major BOOLEAN
 );
+
+-- if the tabe local_releasegroup_flags does not have the image_generated column, add it
+ALTER TABLE local_releasegroup_flags ADD COLUMN IF NOT EXISTS image_generated BOOLEAN DEFAULT FALSE;
