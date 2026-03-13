@@ -40,3 +40,23 @@ CREATE TABLE IF NOT EXISTS local_recording_preferred_key (
 
 -- if the tabe local_releasegroup_flags does not have the image_generated column, add it
 ALTER TABLE local_releasegroup_flags ADD COLUMN IF NOT EXISTS image_generated BOOLEAN DEFAULT FALSE;
+
+ALTER TABLE local_artist_flags ADD COLUMN IF NOT EXISTS image_generated BOOLEAN DEFAULT FALSE;
+ALTER TABLE local_artist_flags ADD COLUMN IF NOT EXISTS no_image BOOLEAN DEFAULT FALSE;
+
+-- add a last updated column to the local_recording_overrides table and set it to the current timestamp for all existing rows and set it to update automatically on row update
+ALTER TABLE local_recording_overrides ADD COLUMN IF NOT EXISTS last_updated TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP;
+CREATE OR REPLACE FUNCTION update_last_updated_column()
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.last_updated = CURRENT_TIMESTAMP;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS trigger_update_recording_last_updated ON local_recording_overrides;
+
+CREATE TRIGGER trigger_update_recording_last_updated
+BEFORE UPDATE ON local_recording_overrides
+FOR EACH ROW
+EXECUTE FUNCTION update_last_updated_column();
