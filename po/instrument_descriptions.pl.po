@@ -1012,14 +1012,6 @@ msgstr ""
 "Chińska lutnia szarpana w kształcie gruszki z czterema strunami i 12–26 "
 "progami."
 
-#. name:ching
-#: DB:instrument/description:618
-msgid ""
-"Ching are a pair of small hand cymbals used in Thai and Cambodian music."
-msgstr ""
-"Ching to para małych talerzy ręcznych używanych w muzyce tajskiej i "
-"kambodżańskiej."
-
 #. name:bugarija
 #: DB:instrument/description:826
 msgid ""
@@ -6004,13 +5996,6 @@ msgstr ""
 msgid "The mridangam is a double-sided drum from India."
 msgstr "Mridangam to dwustronny bęben pochodzący z Indii."
 
-#. name:nabal
-#: DB:instrument/description:684
-msgid ""
-"The nabal is a long, straight brass horn used in Korean traditional music."
-msgstr ""
-"Nabal to długi, prosty róg mosiężny używany w tradycyjnej muzyce koreańskiej."
-
 #. name:nagadou-daiko
 #: DB:instrument/description:553
 msgid "The nagadou-daiko is an elongated barrel-shaped Japanese drum."
@@ -6179,12 +6164,6 @@ msgid ""
 msgstr ""
 "Riq to rodzaj tamburynu, który jest tradycyjnym instrumentem w muzyce "
 "arabskiej."
-
-#. name:rototom
-#: DB:instrument/description:731
-msgid "The rototom is a drum which has no shell and is tuned by rotating."
-msgstr ""
-"Rototom to bęben, który nie posiada obudowy i jest strojony przez obrót."
 
 #. name:sabar
 #: DB:instrument/description:646
@@ -7404,6 +7383,16 @@ msgstr ""
 "Stosowany w tradycyjnym teatrze kabuki i bunraku, składa się z dwóch "
 "kawałków twardego drewna, połączonych ozdobnym sznurkiem."
 
+#. name:nabal
+#: DB:instrument/description:684
+#, fuzzy
+#| msgid ""
+#| "Used in traditional Andes music, it consists of a single row of pipes."
+msgid "Used in traditional music, it's long and straight."
+msgstr ""
+"Instrument ten, stosowany w tradycyjnej muzyce Andów, składa się z "
+"pojedynczego rzędu piszczałek."
+
 #. name:turntable
 #: DB:instrument/description:181
 #, fuzzy
@@ -7831,6 +7820,22 @@ msgstr "saó ôi (flet Muong)"
 #: DB:instrument/description:314
 msgid "trắng jâu bass form of trắng lu"
 msgstr "trắng jâu basowa forma trắng lu"
+
+#~ msgid ""
+#~ "The nabal is a long, straight brass horn used in Korean traditional music."
+#~ msgstr ""
+#~ "Nabal to długi, prosty róg mosiężny używany w tradycyjnej muzyce "
+#~ "koreańskiej."
+
+#~ msgid ""
+#~ "Ching are a pair of small hand cymbals used in Thai and Cambodian music."
+#~ msgstr ""
+#~ "Ching to para małych talerzy ręcznych używanych w muzyce tajskiej i "
+#~ "kambodżańskiej."
+
+#~ msgid "The rototom is a drum which has no shell and is tuned by rotating."
+#~ msgstr ""
+#~ "Rototom to bęben, który nie posiada obudowy i jest strojony przez obrót."
 
 #~ msgid ""
 #~ "The satsuma biwa is a biwa with four strings and frets popularised during "

@@ -9,9 +9,6 @@
 
 import test from 'tape';
 import * as tree from 'weight-balanced-tree';
-import {
-  onConflictUseSecondValue,
-} from 'weight-balanced-tree/union';
 
 import searchItems, {
   indexItems,
@@ -100,6 +97,8 @@ const initialState = createInitialState({
 const initialReleaseState = createInitialReleaseState(
   releaseWithMediumsAndReleaseGroup,
 );
+
+const onConflictUseSecondValue = <T>(v1: T, v2: T): T => v2;
 
 test('merging duplicate relationships', function (t) {
   const nonEndedRelationshipWithBeginDate = {
@@ -455,7 +454,7 @@ test('splitRelationshipByAttributes', function (t) {
    * this particular (existing) relationship doesn't have any.  It should
    * be returned unmodified.
    */
-  const existingRelationship2 = ({
+  const existingRelationship2 = {
     _lineage: [],
     _original: null,
     _status: REL_STATUS_NOOP,
@@ -480,7 +479,7 @@ test('splitRelationshipByAttributes', function (t) {
     id: 1,
     linkOrder: 0,
     linkTypeID: 798,
-  }: RelationshipStateT);
+  } as RelationshipStateT;
   // $FlowExpectedError[cannot-write]
   existingRelationship2._original = existingRelationship2;
   Object.freeze(existingRelationship2);

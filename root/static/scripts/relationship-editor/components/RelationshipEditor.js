@@ -9,7 +9,6 @@
 
 // $FlowFixMe[untyped-import]
 import {captureException} from '@sentry/browser';
-import deepFreeze from 'deep-freeze-strict';
 import * as React from 'react';
 import * as tree from 'weight-balanced-tree';
 import {ValueExistsError} from 'weight-balanced-tree/errors';
@@ -22,9 +21,11 @@ import {INSTRUMENT_ROOT_ID, VOCAL_ROOT_ID} from '../../common/constants.js';
 import MB from '../../common/MB.js';
 import {
   getCatalystContext,
-  getSourceEntityDataForRelationshipEditor,
+  getSourceEntityData,
 } from '../../common/utility/catalyst.js';
 import coerceToError from '../../common/utility/coerceToError.js';
+import deepFreezeInDevelopment
+  from '../../common/utility/deepFreezeInDevelopment.js';
 import isDatabaseRowId from '../../common/utility/isDatabaseRowId.js';
 import {uniqueNegativeId} from '../../common/utility/numbers.js';
 import {
@@ -116,7 +117,7 @@ export function* getInitialRelationshipUpdates(
      * the source and target entity types are the same; see e.g. MBS-12850.
      */
     if (!isDatabaseRowId(target.id)) {
-      target = ({...target, id: uniqueNegativeId()}: RelatableEntityT);
+      target = {...target, id: uniqueNegativeId()} as RelatableEntityT;
     }
 
     const isExistingRelationship = isDatabaseRowId(relationshipData.id);
@@ -173,7 +174,7 @@ export function createInitialState(
 ): RelationshipEditorStateT {
   const {seededRelationships} = args;
 
-  const source = args.source ?? getSourceEntityDataForRelationshipEditor();
+  const source = args.source ?? getSourceEntityData(getCatalystContext());
 
   invariant(
     source.entityType !== 'release',
@@ -226,16 +227,16 @@ export function loadOrCreateInitialState(
   const $c = getCatalystContext();
   let submittedRelationships;
   if (hasSessionStorage && $c.req.method === 'POST') {
-    const source = args.source ?? getSourceEntityDataForRelationshipEditor();
+    const source = args.source ?? getSourceEntityData($c);
     const sessionStorageKey = getHtmlFormSubmissionSessionStorageKey(source);
     const submittedRelationshipsJson =
       sessionStorageWrapper.get(sessionStorageKey);
     if (nonEmpty(submittedRelationshipsJson)) {
       try {
-        submittedRelationships = ((decompactEntityJson(
+        submittedRelationships = (decompactEntityJson(
           JSON.parse(submittedRelationshipsJson),
         // $FlowFixMe[unclear-type]
-        ): any): $ReadOnlyArray<RelationshipStateT>);
+        ) as any) as $ReadOnlyArray<RelationshipStateT>;
       } catch (e) {
         captureException(e);
       } finally {
@@ -317,9 +318,7 @@ export const reducer: ((
   const writableState: {...RelationshipEditorStateT} =
     cloneRelationshipEditorState(state);
   runReducer(writableState, action);
-  if (__DEV__) {
-    deepFreeze(writableState);
-  }
+  deepFreezeInDevelopment(writableState);
   return writableState;
 });
 
@@ -551,7 +550,7 @@ type ErrorMessagePropsT = {
 
 export const ErrorMessage:
   component(...ErrorMessagePropsT) =
-    React.memo<ErrorMessagePropsT, void>(({
+    React.memo<ErrorMessagePropsT, React.MixedElement>(({
       error,
     }: ErrorMessagePropsT): React.MixedElement => (
     <div className="error">

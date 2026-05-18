@@ -65,7 +65,7 @@ function loadAcoustIdData(
       .then(resp => resp.json())
       .then((reqData) => {
         for (const obj of reqData.mbids) {
-          const callback: AcoustIdRequestCallbackT = batch[obj.mbid];
+          const callback: ?AcoustIdRequestCallbackT = batch[obj.mbid];
           if (callback) {
             callback(obj.tracks);
           }
@@ -130,9 +130,7 @@ component AcoustIdCell(recordingMbid: string) {
   );
 }
 
-export default (
-  hydrate<React.PropsOf<AcoustIdCell>>(
-    'div.acoustids',
-    AcoustIdCell,
-  ): component(...React.PropsOf<AcoustIdCell>)
-);
+export default hydrate<React.PropsOf<AcoustIdCell>>(
+  'div.acoustids',
+  AcoustIdCell,
+) as component(...React.PropsOf<AcoustIdCell>);

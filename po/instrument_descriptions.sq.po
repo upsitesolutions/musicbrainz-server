@@ -784,12 +784,6 @@ msgstr ""
 msgid "Chinese pear-shaped plucked lute with four strings and 12 to 26 frets."
 msgstr ""
 
-#. name:ching
-#: DB:instrument/description:618
-msgid ""
-"Ching are a pair of small hand cymbals used in Thai and Cambodian music."
-msgstr ""
-
 #. name:bugarija
 #: DB:instrument/description:826
 msgid ""
@@ -4481,12 +4475,6 @@ msgstr ""
 msgid "The mridangam is a double-sided drum from India."
 msgstr ""
 
-#. name:nabal
-#: DB:instrument/description:684
-msgid ""
-"The nabal is a long, straight brass horn used in Korean traditional music."
-msgstr ""
-
 #. name:nagadou-daiko
 #: DB:instrument/description:553
 msgid "The nagadou-daiko is an elongated barrel-shaped Japanese drum."
@@ -4618,11 +4606,6 @@ msgstr ""
 msgid ""
 "The riq is a type of tambourine used as a traditional instrument in Arabic "
 "music."
-msgstr ""
-
-#. name:rototom
-#: DB:instrument/description:731
-msgid "The rototom is a drum which has no shell and is tuned by rotating."
 msgstr ""
 
 #. name:sabar
@@ -5545,6 +5528,11 @@ msgstr ""
 msgid ""
 "Used in traditional kabuki and bunraku theatre, it consists of two hardwood "
 "pieces tied together with ornamental cord."
+msgstr ""
+
+#. name:nabal
+#: DB:instrument/description:684
+msgid "Used in traditional music, it's long and straight."
 msgstr ""
 
 #. name:turntable

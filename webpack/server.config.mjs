@@ -63,7 +63,7 @@ export default {
 
   mode: WEBPACK_MODE,
 
-  module: moduleConfig,
+  module: moduleConfig('node'),
 
   name: 'server-bundle',
 
@@ -92,5 +92,5 @@ export default {
     ),
   ],
 
-  target: 'node20',
+  target: 'node24',
 };

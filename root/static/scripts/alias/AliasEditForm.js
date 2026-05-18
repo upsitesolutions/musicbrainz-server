@@ -100,7 +100,8 @@ function createInitialState(form: AliasEditFormT, searchHintType: number) {
     guessCaseOptions: createGuessCaseOptionsState(),
     isEnded: form.field.period.field.ended.value,
     isGuessCaseOptionsOpen: false,
-    isTypeSearchHint: form.field.type_id.value === searchHintType,
+    isTypeSearchHint:
+      String(form.field.type_id.value) === String(searchHintType),
     searchHintType,
   };
 }
@@ -360,7 +361,7 @@ const AliasEditForm = ({
   );
 };
 
-export default (hydrate<Props>(
+export default hydrate<Props>(
   'div.alias-edit-form',
   AliasEditForm,
-): component(...Props));
+) as component(...Props);

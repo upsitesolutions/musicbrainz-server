@@ -352,8 +352,8 @@ sub begin : Private
             $new_edit_notes_mtime = $notes_updated;
         }
     } catch {
-        $alert = l('Our Redis server appears to be down; some features may not work as intended or expected.');
-        warn "Redis connection to get alert failed: $_";
+        $alert = l('Our Valkey server appears to be down; some features may not work as intended or expected.');
+        warn "Valkey connection to get alert failed: $_";
     };
     if ($c->user_exists && $c->user->is_banner_editor) {
         # For banner editors, show a dismissed banner again after 20 hours (MBS-8940)
@@ -410,6 +410,20 @@ sub begin : Private
 
     # NOTE: The following checks are not applied to /ws/js/edit. If you change
     # anything here, make sure it is reflected there, too (if applicable).
+
+    if (DBDefs->REQUIRE_LOGIN_FOR_VIEWING && !$c->user_exists) {
+        my $action = $c->action;
+        my $namespace = $action->namespace;
+        my $private_path = $action->private_path;
+        unless (
+            $namespace eq 'oauth2' ||
+            $private_path eq '/index' ||
+            $private_path eq '/user/login' ||
+            $private_path eq '/account/register'
+        ) {
+            $attributes->{RequireAuth} = 1;
+        }
+    }
 
     # Edit implies RequireAuth
     if (!exists $attributes->{RequireAuth} && exists $attributes->{Edit}) {

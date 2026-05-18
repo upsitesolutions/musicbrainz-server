@@ -35,11 +35,11 @@ component IswcList(
 ) {
   return (
     <CollapsibleList
-      ContainerElement={isSidebar ? 'dl' : 'ul'}
-      InnerElement={isSidebar ? 'div' : 'li'}
       ariaLabel={l('ISWCs')}
       buildRow={isSidebar ? buildIswcSidebarRow : buildIswcListRow}
       className={isSidebar ? 'properties iswcs' : 'iswcs'}
+      ContainerElement={isSidebar ? 'dl' : 'ul'}
+      InnerElement={isSidebar ? 'div' : 'li'}
       rows={iswcs}
       showAllTitle={l('Show all ISWCs')}
       showLessTitle={l('Show less ISWCs')}
@@ -49,7 +49,7 @@ component IswcList(
   );
 }
 
-export default (hydrate<React.PropsOf<IswcList>>(
+export default hydrate<React.PropsOf<IswcList>>(
   'div.iswc-list-container',
   IswcList,
-): component(...React.PropsOf<IswcList>));
+) as component(...React.PropsOf<IswcList>);

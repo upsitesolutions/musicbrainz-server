@@ -2129,14 +2129,6 @@ msgid ""
 "accordion players as bass accompaniment in early 20th century Wallonia."
 msgstr ""
 
-#. name:bazooka
-#: DB:instrument/description:741
-msgid ""
-"Large wide tube with a very strongly flaring bell, the telescoping creates "
-"only subtle fluctuating overtones. It inspired the name of the anti-tank "
-"weapon."
-msgstr ""
-
 #. name:low whistle
 #: DB:instrument/description:398
 msgid ""
@@ -2663,6 +2655,15 @@ msgid ""
 "a03ac232db98\">tamborim</a>.<br /> Side drum, often with one or more snares, "
 "worn by one person and beaten by one hand, it is often combined with tabor "
 "pipes."
+msgstr ""
+
+#. name:bazooka
+#: DB:instrument/description:741
+msgid ""
+"Not to be confused with the <a href=\"instrument/2091cdd2-7953-453f-a29e-"
+"cfcbf5140d44\">bouzouki</a>.</br> Large wide tube with a very strongly "
+"flaring bell, the telescoping creates only subtle fluctuating overtones. It "
+"inspired the name of the anti-tank weapon."
 msgstr ""
 
 #. name:mezwed
@@ -4425,12 +4426,6 @@ msgstr ""
 msgid "The mridangam is a double-sided drum from India."
 msgstr ""
 
-#. name:nabal
-#: DB:instrument/description:684
-msgid ""
-"The nabal is a long, straight brass horn used in Korean traditional music."
-msgstr ""
-
 #. name:nagadou-daiko
 #: DB:instrument/description:553
 msgid "The nagadou-daiko is an elongated barrel-shaped Japanese drum."
@@ -5484,6 +5479,11 @@ msgstr ""
 msgid ""
 "Used in traditional kabuki and bunraku theatre, it consists of two hardwood "
 "pieces tied together with ornamental cord."
+msgstr ""
+
+#. name:nabal
+#: DB:instrument/description:684
+msgid "Used in traditional music, it's long and straight."
 msgstr ""
 
 #. name:turntable
